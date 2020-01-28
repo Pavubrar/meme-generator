@@ -8,7 +8,9 @@ function ContactCard(props) {
             <p style = {{color:!props.contact.email && "red"}}>Phone: {props.contact.phone}</p>
             <p>Email: {props.contact.email}</p>
             putt conditional rendering within style ((this code is for contact cards))  and next is for School products*/}
-            <input type="checkbox"  checked= {props.item.completed}/>
+            <input type="checkbox"  checked= {props.item.completed}
+                onChange = {() => props.handleChange(props.item.id)}
+            />
             <p>{props.item.text}</p>
         </div>
     )

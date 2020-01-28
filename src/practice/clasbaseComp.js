@@ -1,20 +1,51 @@
 // 1. Convert all 3 components to be class-based
 // 2. Fix the small bug
 // https://scrimba.com/p/p4Mrt9/cQnMDHD TO LEARN ABOUT CLASSES
-
+// https://scrimba.com/g/greacthooks HOOKS
 import React from 'react';
+import randomcolor from "randomcolor"
+import Conditional from "./conditionalRen"
  class App1 extends React.Component {
      constructor(){
          super()
          this.state ={
-            isLoggedIn: true
+            isLoggedIn: true,
+            color:"",
+            isLoading: true
         }
+        this.handleClick= this.handleClick.bind(this)
     }
+    handleClick () {
+//this.setState({isLoggedIn: false, color: randomcolor()} 
+this.setState(prevState => {
+    return{
+        isLoggedIn: !prevState.isLoggedIn,
+        color: randomcolor()
+    }
+})
+
+    }
+    componentDidMount(){
+setTimeout(() => {
+    this.setState({
+        isLoading : false
+    })
+}, 3000);
+    }
+    // componentDidUpdate(prevProps, prevState){
+    //     if(prevState.isLoggedIn !== this.state.isLoggedIn)
+    //         const newColor = randomcolor()
+    //         this.setState({color:newColor})
+    // }
     render(){
-        
     return (
         <div>
-            <h1>You are currently logged {this.state.isLoggedIn? "in" : "out"}</h1>
+            <h1 style= {{color: this.state.color}}>You are currently logged {this.state.isLoggedIn? "in" : "out"}</h1>
+            <button onClick={this.handleClick}>Change!</button>
+            <div>
+            {this.state.isLoading ? <h1>Loading....</h1> : 
+            <Conditional />}
+        </div>
         </div>
     )
     }
@@ -74,4 +105,5 @@ import React from 'react';
 //     }
 // }
 
+// https://reactjs.org/docs/events.html#supported-events EVENT HANDLER
 export default App1;
