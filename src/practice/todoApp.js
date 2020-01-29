@@ -6,7 +6,8 @@ import TodoItem from './todoItem'
 import Joke from './joke';
 import jokeData from './jokeData';
 import TodoItemClass from './todoItemClass';
-
+import TodoList from "./lifrcycle";
+import Form from "./form";
 
 // render a unorderd list put this code in index.js under ReactDOM.render(
 //     <ul>
@@ -34,8 +35,10 @@ function MyApp() {
       <div> {jokeComponents}</div>
       <TodoItem />
       <Footer />
+      <Form />
       <div>
         <TodoItemClass />
+        <TodoList />
       </div>
       </>
     )
