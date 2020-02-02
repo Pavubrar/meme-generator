@@ -12,21 +12,27 @@ class MemeGenerator  extends Component {
     }
     componentDidMount() {
         fetch("https://api.imgflip.com/get_memes")
-        .then(Response => Response.json())
-        .then(Response => {
-            const {memes} =Response.data
+        .then(response => response.json())
+        .then(response => {
+            const {memes} =response.data
             this.setState({allMemeImgs: memes})
         })
     }
-    handleChange = () =>{
+    handleChange = (event) =>{
         const {name, value} = event.target
         this.setState({[name]: value})
+    }
+    handleSubmit =(event) => {
+        event.preventDefault()
+        const randNum = Math.floor(Math.random() * this.state.allMemeImgs.length)
+        const randMemeImg = this.state.allMemeImgs[randNum].url
+this.setState({randomImg: randMemeImg})
     }
     
     render() { 
         return ( 
             <div>
-            <form className ="meme-form">
+            <form className ="meme-form" onSubmit={this.handleSubmit}>
                 <input type ="text" name= "topText" placeholder ="Top-Text" value={this.state.topText}
                 onChange ={this.handleChange} />
                 <input type ="text" name= "bottomText" placeholder ="Bottom-Text" value={this.state.bottomText}
@@ -36,10 +42,10 @@ class MemeGenerator  extends Component {
             <div className="meme">
                 <img src ={this.state.randomImg} alt=""/>
                 <h2 className="top">
-                {this.topText}
+                {this.state.topText}
                 </h2>
                 <h2 className="bottom">
-                {this.bottomText}
+                {this.state.bottomText}
                 </h2>
             </div>
             </div>

@@ -7,7 +7,7 @@ import randomcolor from "randomcolor"
 import Conditional from "./conditionalRen"
  class App1 extends React.Component {
      constructor(){
-         super()
+         super()            // change to use class properties, you can use || state = {isLoggedIn: true} get rid of constructor
          this.state ={
             isLoggedIn: true,
             color:"",
@@ -107,3 +107,6 @@ setTimeout(() => {
 
 // https://reactjs.org/docs/events.html#supported-events EVENT HANDLER
 export default App1;
+
+
+

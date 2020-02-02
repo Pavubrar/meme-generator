@@ -8,6 +8,9 @@ import jokeData from './jokeData';
 import TodoItemClass from './todoItemClass';
 import TodoList from "./lifrcycle";
 import Form from "./form";
+import Header1 from "./meme-project/header1";
+import Meme from "./meme-project/memeGen";
+import UseState from "./hooks/useState"
 
 // render a unorderd list put this code in index.js under ReactDOM.render(
 //     <ul>
@@ -39,6 +42,9 @@ function MyApp() {
       <div>
         <TodoItemClass />
         <TodoList />
+        <Header1 />
+        <Meme />
+        <UseState />
       </div>
       </>
     )
